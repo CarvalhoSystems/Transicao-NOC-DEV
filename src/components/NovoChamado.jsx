@@ -55,7 +55,9 @@ function NovoChamado({ onAddIncident }) {
       text.includes("bug") ||
       text.includes("api") ||
       text.includes("sistema") ||
-      text.includes("erro de código")
+      text.includes("erro de código") ||
+      text.includes("crash") || // Adicionado para cobrir erros de dev comuns
+      text.includes("stack")
     ) {
       service = "Desenvolvimento";
     } else if (
@@ -68,13 +70,16 @@ function NovoChamado({ onAddIncident }) {
     } else if (
       text.includes("telefone") ||
       text.includes("ramal") ||
-      text.includes("voip")
+      text.includes("voip") ||
+      text.includes("cloudsy") || // Adicionado para o seu exemplo real!
+      text.includes("avaya") // Adicionado para o seu exemplo real!
     ) {
       service = "Telefonia";
     }
 
     return { severity, service };
   };
+
 
   async function handleFormSubmit(event) {
     event.preventDefault();

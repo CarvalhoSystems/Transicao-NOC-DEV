@@ -21,6 +21,7 @@ export const SEVERITY_CONFIG = {
   },
 };
 
+// Estado dos Chamados 
 export const STATUS_CONFIG = {
   open: {
     label: "Aberto",
@@ -36,6 +37,7 @@ export const STATUS_CONFIG = {
   },
 };
 
+// Operadores do NOC 
 export const NOC_TEAM = [
   "Ana Silva",
   "Rodrigo Carvalho",
