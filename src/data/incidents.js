@@ -1,0 +1,66 @@
+/**
+ * Dados iniciais simulados — num projeto real viriam de uma API.
+ * Mantemos fora do componente para o App.jsx não ficar gigante.
+ */
+export const initialIncidents = [
+  {
+    id: 'INC-1042',
+    title: 'Latência elevada no cluster DB primário',
+    service: 'Base de Dados',
+    severity: 'critical',
+    status: 'open',
+    assignee: null,
+    createdAt: '2026-06-12T08:14:00',
+    description: 'Tempos de resposta acima de 2s no endpoint /api/orders.',
+  },
+  {
+    id: 'INC-1041',
+    title: 'Falha intermitente no load balancer',
+    service: 'Rede',
+    severity: 'high',
+    status: 'in_progress',
+    assignee: 'Ana Silva',
+    createdAt: '2026-06-12T07:45:00',
+    description: '502 Bad Gateway reportado em 3 nós do pool east-1.',
+  },
+  {
+    id: 'INC-1040',
+    title: 'Certificado SSL a expirar em 48h',
+    service: 'Segurança',
+    severity: 'medium',
+    status: 'open',
+    assignee: null,
+    createdAt: '2026-06-12T06:30:00',
+    description: 'Certificado *.portal.cliente expira a 14/06/2026.',
+  },
+  {
+    id: 'INC-1039',
+    title: 'Alerta de disco a 85% no servidor de logs',
+    service: 'Infraestrutura',
+    severity: 'low',
+    status: 'open',
+    assignee: null,
+    createdAt: '2026-06-12T05:10:00',
+    description: 'Partição /var/log atingiu threshold de warning.',
+  },
+  {
+    id: 'INC-1038',
+    title: 'API de pagamentos indisponível',
+    service: 'Aplicações',
+    severity: 'critical',
+    status: 'in_progress',
+    assignee: 'João Costa',
+    createdAt: '2026-06-12T04:22:00',
+    description: 'Timeout em todas as chamadas POST /payments.',
+  },
+  {
+    id: 'INC-1037',
+    title: 'Backup noturno concluído com avisos',
+    service: 'Infraestrutura',
+    severity: 'low',
+    status: 'resolved',
+    assignee: 'Maria Santos',
+    createdAt: '2026-06-11T23:00:00',
+    description: '2 ficheiros ignorados por lock — verificar logs.',
+  },
+]
