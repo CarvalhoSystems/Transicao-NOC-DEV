@@ -23,7 +23,7 @@ function TriagePanel({
                 {incident.id}
               </p>
               <h2 className="text-lg font-bold text-white leading-tight mt-1">
-                {incident.title}
+                {incident.title && incident.company}
               </h2>
             </div>
             <button

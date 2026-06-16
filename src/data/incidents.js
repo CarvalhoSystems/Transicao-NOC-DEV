@@ -5,6 +5,7 @@
 export const initialIncidents = [
   {
     id: "INC-1042",
+    company: "Cloudsy",
     title: "Falha de inicialização na WKS02 Cloudsy após restart",
     service: "Telefonia / Voip",
     severity: "critical",
@@ -16,6 +17,7 @@ export const initialIncidents = [
   },
   {
     id: "INC-1041",
+    company: "Cloudsy",
     title: "Crash na API: Call Stack Size Exceeded no processamento de logs",
     service: "API-Gateway",
     severity: "high",
@@ -27,6 +29,7 @@ export const initialIncidents = [
   },
   {
     id: "INC-1040",
+    company: "TIM",
     title: "Certificado TIM a expirar em 10 dias",
     service: "Segurança",
     severity: "medium",
@@ -37,6 +40,7 @@ export const initialIncidents = [
   },
   {
     id: "INC-1039",
+    company: "Lojao do Bras",
     title: "Alerta de disco a 85% no servidor de logs",
     service: "Infraestrutura",
     severity: "low",
@@ -47,16 +51,18 @@ export const initialIncidents = [
   },
   {
     id: "INC-1038",
+    company: "TIM-SBC RJO",
     title: "Status Tronco TRK-TIM-BF",
     service: "Aplicações",
     severity: "critical",
     status: "in_progress",
     assignee: "Yasmin Borges",
     createdAt: "2026-06-12T04:22:00",
-    description: "Timeout em todas as chamadas POST /payments.",
+    description: "INTERCHANGE no TIM - SBC - RJO 10.96.231.68",
   },
   {
     id: "INC-1037",
+    company: "Tel Telematica",
     title: "Backup noturno Tel Telematica",
     service: "Infraestrutura, NOC",
     severity: "low",
@@ -64,5 +70,16 @@ export const initialIncidents = [
     assignee: "Maria Santos",
     createdAt: "2026-06-22T23:00:00",
     description: "2 ficheiros ignorados por lock — verificar logs.",
+  },
+  {
+    id: "INC-1036",
+    company: "OESP",
+    title: "Restart no ACCS",
+    service: "NOC",
+    severity: "high",
+    status: "open",
+    assignee: null,
+    createdAt: "2026-06-16T01:00",
+    description: "Restart programado de 10 em 10 dias",
   },
 ];

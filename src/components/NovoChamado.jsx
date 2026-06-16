@@ -5,6 +5,7 @@ function NovoChamado({ onAddIncident }) {
   const navigate = useNavigate();
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [formData, setFormData] = useState({
+    company: "",
     title: "",
     description: "",
     service: "",
@@ -80,11 +81,10 @@ function NovoChamado({ onAddIncident }) {
     return { severity, service };
   };
 
-
   async function handleFormSubmit(event) {
     event.preventDefault();
-    if (!formData.title || !formData.description) {
-      return alert("Preencha o título e a descrição!");
+    if (!formData.company || !formData.title || !formData.description) {
+      return alert("Preencha o nome da empresa, o título e a descrição!");
     }
 
     setIsAnalyzing(true);
@@ -98,6 +98,7 @@ function NovoChamado({ onAddIncident }) {
 
       const newIncident = {
         id: `INC-${Math.floor(1000 + Math.random() * 9000)}`,
+        company: formData.company,
         title: formData.title,
         description: formData.description,
         service: service,
@@ -126,6 +127,25 @@ function NovoChamado({ onAddIncident }) {
 
         <form onSubmit={handleFormSubmit} className="space-y-6">
           {/* Grupo: Título */}
+          <div className="flex flex-col gap-2">
+            <label
+              htmlFor="company"
+              className="text-xs font-bold uppercase tracking-widest text-slate-500"
+            >
+              Empresa
+            </label>
+            <input
+              type="text"
+              id="company"
+              value={formData.company}
+              onChange={(e) =>
+                setFormData({ ...formData, company: e.target.value })
+              }
+              placeholder="Ex : TIM, INPI"
+              className="rounded-md border border-slate-700 bg-slate-800 px-4 py-3 text-white placeholder:text-slate-600 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 outline-none transition-all"
+            />
+          </div>
+
           <div className="flex flex-col gap-2">
             <label
               htmlFor="title"

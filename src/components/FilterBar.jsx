@@ -26,7 +26,7 @@ function FilterBar({
         <select
           value={severityFilter}
           onChange={(e) => onSeverityChange(e.target.value)}
-          className="rounded-md border border-slate-600 bg-slate-900 px-3 py-2 text-sm text-white focus:border-cyan-500 focus:outline-none"
+          className="w-full sm:w-auto rounded-md border border-slate-600 bg-slate-900 px-3 py-2 text-sm text-white focus:border-cyan-500 focus:outline-none"
         >
           <option value="all">Todas severidades</option>
           {Object.entries(SEVERITY_CONFIG).map(([key, { label }]) => (
@@ -39,7 +39,7 @@ function FilterBar({
         <select
           value={statusFilter}
           onChange={(e) => onStatusChange(e.target.value)}
-          className="rounded-md border border-slate-600 bg-slate-900 px-3 py-2 text-sm text-white focus:border-cyan-500 focus:outline-none"
+          className="w-full sm:w-auto rounded-md border border-slate-600 bg-slate-900 px-3 py-2 text-sm text-white focus:border-cyan-500 focus:outline-none"
         >
           <option value="all">Todos estados</option>
           {Object.entries(STATUS_CONFIG).map(([key, { label }]) => (
@@ -50,7 +50,7 @@ function FilterBar({
         </select>
       </div>
     </section>
-  )
+  );
 }
 
 export default FilterBar

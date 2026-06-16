@@ -101,7 +101,7 @@ function App() {
                   onStatusChange={setStatusFilter}
                 />
 
-                <main className="mx-auto grid max-w-7xl gap-4 px-6 pb-8 lg:grid-cols-[1fr_320px]">
+                <main className="mx-auto grid max-w-7xl gap-6 px-4 pb-8 sm:px-6 lg:grid-cols-[1fr_320px]">
                   <IncidentTable
                     incidents={filteredIncidents}
                     selectedId={selectedId}

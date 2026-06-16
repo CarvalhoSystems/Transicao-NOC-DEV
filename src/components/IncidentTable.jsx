@@ -15,12 +15,13 @@ function IncidentTable({ incidents, selectedId, onSelect }) {
         <thead>
           <tr className="border-b border-slate-700/60 bg-slate-900/50 text-xs uppercase tracking-wide text-slate-500">
             <th className="px-4 py-3">ID</th>
+            <th className="px-4 py-3">Empresa</th>
             <th className="px-4 py-3">Título</th>
-            <th className="px-4 py-3">Serviço</th>
+            <th className="px-4 py-3 hidden md:table-cell">Serviço</th>
             <th className="px-4 py-3">Severidade</th>
             <th className="px-4 py-3">Estado</th>
-            <th className="px-4 py-3">Responsável</th>
-            <th className="px-4 py-3">Aberto em</th>
+            <th className="px-4 py-3 hidden lg:table-cell">Responsável</th>
+            <th className="px-4 py-3 hidden xl:table-cell">Aberto em</th>
           </tr>
         </thead>
         <tbody>
@@ -35,7 +36,7 @@ function IncidentTable({ incidents, selectedId, onSelect }) {
         </tbody>
       </table>
     </div>
-  )
+  );
 }
 
 export default IncidentTable
