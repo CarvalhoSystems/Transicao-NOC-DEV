@@ -13,7 +13,7 @@ export const initialIncidents = [
     assignee: null,
     createdAt: "2026-06-12T08:14:00",
     description:
-      "Realizado o restart preventivo na workstation WKS02 da Cloudsy, porém a máquina não subiu os serviços de telefonia. Foi necessário acionar o suporte de terceiro (Avaya) para atuação emergencial.",
+      "Realizar o restart preventivo na workstation WKS02 da Cloudsy, porém a máquina não subiu os serviços de telefonia. Foi necessário acionar o suporte de terceiro (Avaya) para atuação emergencial.",
   },
   {
     id: "INC-1041",

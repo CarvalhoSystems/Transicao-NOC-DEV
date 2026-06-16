@@ -101,20 +101,21 @@ function App() {
                   onStatusChange={setStatusFilter}
                 />
 
-                <main className="mx-auto grid max-w-7xl gap-6 px-4 pb-8 sm:px-6 lg:grid-cols-[1fr_320px]">
+                <main className="mx-auto max-w-7xl px-4 pb-8 sm:px-6">
                   <IncidentTable
                     incidents={filteredIncidents}
                     selectedId={selectedId}
                     onSelect={setSelectedId}
                   />
-                  <TriagePanel
-                    incident={selectedIncident}
-                    onAssign={handleAssign}
-                    onStatusChange={handleStatusChange}
-                    onSeverityChange={handleSeverityChange}
-                    onClose={() => setSelectedId(null)}
-                  />
                 </main>
+
+                <TriagePanel
+                  incident={selectedIncident}
+                  onAssign={handleAssign}
+                  onStatusChange={handleStatusChange}
+                  onSeverityChange={handleSeverityChange}
+                  onClose={() => setSelectedId(null)}
+                />
               </>
             }
           />

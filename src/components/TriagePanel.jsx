@@ -12,18 +12,26 @@ function TriagePanel({
   onSeverityChange,
   onClose,
 }) {
+  if (!incident) return null;
+
   return (
-    <aside className="flex flex-col gap-4">
-      {/* Card de Triagem do Incidente Selecionado */}
-      {incident ? (
-        <div className="rounded-lg border border-slate-700/60 bg-slate-800/50 p-5 shadow-xl backdrop-blur-sm animate-in fade-in slide-in-from-right-4 duration-300">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+      {/* Backdrop: Fundo escurecido que fecha ao clicar */}
+      <div
+        className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm"
+        onClick={onClose}
+      />
+
+      <aside className="relative flex w-full max-w-lg flex-col gap-4 animate-in fade-in zoom-in-95 duration-200">
+        {/* Card de Triagem do Incidente Selecionado */}
+        <div className="rounded-lg border border-slate-700/60 bg-slate-900 p-5 shadow-2xl">
           <div className="mb-4 flex items-start justify-between gap-2">
             <div>
               <p className="font-mono text-[10px] font-bold text-cyan-400/60 tracking-[0.2em] uppercase">
                 {incident.id}
               </p>
               <h2 className="text-lg font-bold text-white leading-tight mt-1">
-                {incident.title && incident.company}
+                {incident.company} - {incident.title}
               </h2>
             </div>
             <button
@@ -109,24 +117,19 @@ function TriagePanel({
                 </select>
               </div>
             </div>
+            <button
+              className="w-full rounded w-md bg-red-600 bg-slate-900 px-10 cursor-pointer"
+              type="submit"
+              id="confirmar"
+              onClick={() => onClose()}
+              aria-label="Fechar painel"
+            >
+              Confirmar
+            </button>
           </div>
         </div>
-      ) : (
-        <div className="flex min-h-[280px] items-center justify-center rounded-lg border border-dashed border-slate-700/60 bg-slate-800/10 p-6 text-center text-xs text-slate-500 leading-relaxed italic">
-          Selecione um incidente na tabela <br /> para realizar a triagem.
-        </div>
-      )}
-
-      {/* Botão de Abrir Chamado separado em outra DIV */}
-      <div className="rounded-lg border border-slate-700/40 bg-slate-900/40 p-4 shadow-lg border-t-2 border-t-cyan-500/20">
-        <Link
-          to="/novo-chamado"
-          className="flex items-center justify-center gap-2 w-full rounded-md bg-cyan-600 px-4 py-2.5 text-sm font-bold text-white shadow-lg shadow-cyan-900/20 hover:bg-cyan-500 active:scale-[0.98] transition-all"
-        >
-          <span className="text-lg leading-none">+</span> Abrir Novo Chamado
-        </Link>
-      </div>
-    </aside>
+      </aside>
+    </div>
   );
 }
 
