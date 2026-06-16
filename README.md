@@ -14,18 +14,19 @@ Este projeto é uma plataforma de gerenciamento de incidentes (NOC - Network Ope
 
 - **Dashboard de Estatísticas**: Visualização rápida de incidentes totais, abertos, em curso e críticos.
 - **Filtragem Inteligente**: Busca em tempo real por ID, título ou serviço, além de filtros por severidade e status.
-- **Painel de Triagem**: Interface lateral para seleção de incidentes onde é possível:
-  - Visualizar detalhes técnicos.
+- **Painel de Triagem (Modal)**: Interface em overlay para triagem focada, permitindo:
+  - Visualizar detalhes técnicos e descrições sem perder o contexto da lista.
   - Atribuir um operador do time de NOC.
   - Alterar o estado (Status) e a prioridade (Severidade).
-- **Abertura de Chamados**: Rota dedicada para criação de novos incidentes com integração de estado global.
-- **Design Responsivo**: Adaptado para diferentes resoluções com foco em legibilidade de dados operacionais.
+- **Menu de Navegação Responsivo**: Menu hamburger para fácil acesso a "Novo Chamado" e configurações, otimizando o espaço em dispositivos móveis.
+- **Abertura de Chamados**: Rota dedicada com análise inteligente de texto para classificação automática de incidentes.
+- **Design 100% Responsivo**: Layout mobile-first com tabelas adaptativas que ocultam colunas secundárias em telas menores para garantir legibilidade absoluta.
 
 ## 📂 Estrutura do Projeto
 
 ```text
 src/
-├── components/        # Componentes reutilizáveis (Header, StatsBar, Table, etc.)
+├── components/        # Componentes reutilizáveis (Header, StatsBar, Table, Modal, etc.)
 ├── data/              # Mock de dados iniciais para simulação de API.
 ├── constants/         # Configurações de cores, nomes de times e estados.
 ├── App.jsx            # Lógica central, roteamento e gestão de estado global.
@@ -54,6 +55,8 @@ src/
 
 ## 🧠 Conceitos de Engenharia Aplicados
 
+- **Arquitetura de Modais**: Gerenciamento de estado para controle de visibilidade de componentes sobrepostos (Overlays).
+- **Mobile-First Design**: Implementação estratégica de breakpoints do Tailwind para priorizar a experiência em dispositivos móveis.
 - **Imutabilidade**: Atualização de estado seguindo as melhores práticas do React para garantir re-renderizações previsíveis.
 - **Separação de Preocupações**: Componentes "burros" (presentational) focados em UI e lógica centralizada no `App.jsx`.
 - **Performance**: Otimização de cálculos de filtragem para evitar processamento desnecessário em listas grandes.
