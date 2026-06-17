@@ -1,12 +1,12 @@
 import IncidentRow from './IncidentRow'
 
-function IncidentTable({ incidents, selectedId, onSelect }) {
+function IncidentTable({ incidents, selectedId, onSelect, compamny }) {
   if (incidents.length === 0) {
     return (
       <div className="rounded-lg border border-slate-700/60 bg-slate-800/30 p-8 text-center text-slate-500">
         Nenhum incidente corresponde aos filtros aplicados.
       </div>
-    )
+    );
   }
 
   return (

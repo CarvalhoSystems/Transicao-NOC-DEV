@@ -31,6 +31,7 @@ function App() {
       const matchesSearch =
         term === "" ||
         incident.id.toLowerCase().includes(term) ||
+        incident.company.toLowerCase().includes(term) ||
         incident.title.toLowerCase().includes(term) ||
         incident.service.toLowerCase().includes(term);
 

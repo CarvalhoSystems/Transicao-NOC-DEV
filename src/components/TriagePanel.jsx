@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { NOC_TEAM, STATUS_CONFIG, SEVERITY_CONFIG } from "../constants";
 import { Link } from "react-router-dom"; //Biblioteca de rotas de paginas
 
@@ -12,6 +13,15 @@ function TriagePanel({
   onSeverityChange,
   onClose,
 }) {
+  // Fecha o modal ao pressionar a tecla Escape
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", handleEsc);
+    return () => window.removeEventListener("keydown", handleEsc);
+  }, [onClose]);
+
   if (!incident) return null;
 
   return (
@@ -118,13 +128,12 @@ function TriagePanel({
               </div>
             </div>
             <button
-              className="w-full rounded w-md bg-red-600 bg-slate-900 px-10 cursor-pointer"
-              type="submit"
+              className="w-full mt-2 rounded-md bg-cyan-600 py-2.5 text-sm font-bold text-white shadow-lg shadow-cyan-900/20 hover:bg-cyan-500 active:scale-[0.98] transition-all"
+              type="button"
               id="confirmar"
-              onClick={() => onClose()}
-              aria-label="Fechar painel"
+              onClick={onClose}
             >
-              Confirmar
+              Salvar Alterações
             </button>
           </div>
         </div>
