@@ -63,4 +63,4 @@ src/
 
 ---
 
-Desenvolvido como parte da evolução técnica de operações de rede para engenharia de software. 💡
+Desenvolvido como parte da evolução técnica de operações de rede para Desenvolvimento de Sistemas. 💡
