@@ -54,16 +54,27 @@ function Header() {
             >
               <span className="text-cyan-500">✚</span> Novo Chamado
             </Link>
-            <button
+
+            <Link
+              to="/encerrados"
               onClick={() => setIsMenuOpen(false)}
-              className="flex items-center gap-3 rounded-md px-4 py-3 text-left text-sm font-medium text-slate-400 hover:bg-slate-800 transition-colors"
+              className="flex items-center gap-3 rounded-md px-4 py-3 text-sm font-bold text-white hover:bg-slate-800 transition-colors"
             >
-              <span className="text-slate-500">⚙</span> Configurações
-            </button>
+              <span className="text-slate-500">📨</span> Chamados Encerrados
+            </Link>
+
+            <Link
+              to="/"
+              onClick={() => setIsMenuOpen(false)}
+              className="flex items-center gap-3 rounded-md px-4 py-3 text-sm font-bold text-white hover:bg-slate-800 transition-colors"
+            >
+              <span className="text-slate-500">🏠</span> Dashboard
+            </Link>
+
             <div className="md:hidden mt-2 pt-2 border-t border-slate-800 flex items-center gap-2 px-4 py-2">
               <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
-              <span className="text-xs text-emerald-400 uppercase tracking-widest">
-                Ativo
+              <span className="text-sm text-emerald-400">
+                Monitorização ativa
               </span>
             </div>
           </nav>

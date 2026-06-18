@@ -7,6 +7,7 @@ import TriagePanel from "./components/TriagePanel";
 import { initialIncidents } from "./data/incidents";
 import { BrowserRouter, Routes, Route } from "react-router-dom"; //Biblioteca de rotas de paginas
 import NovoChamado from "./components/NovoChamado"; //Novo Formulario que vai mudar de pagina
+import ChamadosEncerrados from "./components/ChamadosEncerrados"; // Importando como Componente
 
 function App() {
   // Estado principal: lista de incidentes (equivalente ao array que manipulavas no Vanilla JS)
@@ -125,6 +126,30 @@ function App() {
           <Route
             path="/novo-chamado"
             element={<NovoChamado onAddIncident={handleAddIncident} />}
+          />
+
+          {/* Rota para a área de Chamados Encerrados */}
+          <Route
+            path="/encerrados"
+            element={
+              <>
+                <StatsBar incidents={incidents} />
+                <ChamadosEncerrados
+                  incidents={incidents}
+                  selectedId={selectedId}
+                  onSelect={setSelectedId}
+                />
+
+                {/* Mantemos o painel de triagem caso queiram ver detalhes do encerrado */}
+                <TriagePanel
+                  incident={selectedIncident}
+                  onAssign={handleAssign}
+                  onStatusChange={handleStatusChange}
+                  onSeverityChange={handleSeverityChange}
+                  onClose={() => setSelectedId(null)}
+                />
+              </>
+            }
           />
         </Routes>
       </div>
