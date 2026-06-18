@@ -53,6 +53,7 @@ function IncidentRow({ incident, isSelected, onSelect }) {
         {formatDate(incident.createdAt)}
       </td>
     </tr>
+    // Aqui vai ter a nota ao chamado !
   );
 }
 
