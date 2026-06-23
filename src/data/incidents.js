@@ -35,7 +35,7 @@ export const initialIncidents = [
     severity: "medium",
     status: "open",
     assignee: null,
-    createdAt: "2026-06-12T06:30:00",
+    createdAt: "2026-06-13T06:30:00",
     description: "Certificado *.portal.cliente expira a 14/06/2026.",
   },
   {
@@ -46,7 +46,7 @@ export const initialIncidents = [
     severity: "low",
     status: "open",
     assignee: null,
-    createdAt: "2026-06-12T05:10:00",
+    createdAt: "2026-06-14T05:10:00",
     description: "Partição /var/log atingiu threshold de warning.",
   },
   {
@@ -57,7 +57,7 @@ export const initialIncidents = [
     severity: "critical",
     status: "in_progress",
     assignee: "Yasmin Borges",
-    createdAt: "2026-06-12T04:22:00",
+    createdAt: "2026-06-18T04:22:00",
     description: "INTERCHANGE no TIM - SBC - RJO 10.96.231.68",
   },
   {
@@ -79,7 +79,7 @@ export const initialIncidents = [
     severity: "high",
     status: "open",
     assignee: null,
-    createdAt: "2026-06-16T01:00",
+    createdAt: "2026-06-23T01:00",
     description: "Restart programado de 10 em 10 dias",
   },
 ];
