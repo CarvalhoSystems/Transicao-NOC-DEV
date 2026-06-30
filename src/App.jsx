@@ -8,6 +8,9 @@ import { initialIncidents } from "./data/incidents";
 import { BrowserRouter, Routes, Route } from "react-router-dom"; //Biblioteca de rotas de paginas
 import NovoChamado from "./components/NovoChamado"; //Novo Formulario que vai mudar de pagina
 import ChamadosEncerrados from "./components/ChamadosEncerrados"; // Importando como Componente
+import NavBar from "./components/NavBar"; // 1. Importando a nova NavBar
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
   // Estado principal: lista de incidentes (equivalente ao array que manipulavas no Vanilla JS)
@@ -84,74 +87,84 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-slate-950 text-slate-200">
-        <Header />
+      {/* 2. Layout principal com Flexbox */}
+      <div className="flex min-h-screen bg-slate-950 text-slate-200">
+        <NavBar />
 
-        <Routes>
-          {/* Rota principal do Dashboard */}
-          <Route
-            path="/"
-            element={
-              <>
-                <StatsBar incidents={incidents} />
-                <FilterBar
-                  searchTerm={searchTerm}
-                  onSearchChange={setSearchTerm}
-                  severityFilter={severityFilter}
-                  onSeverityChange={setSeverityFilter}
-                  statusFilter={statusFilter}
-                  onStatusChange={setStatusFilter}
-                />
+        {/* 3. Container do conteúdo principal que ocupará o resto da tela */}
+        <div className="flex-1">
+          <Header />
+          <Routes>
+            {/* Rota principal do Dashboard */}
+            <Route
+              path="/"
+              element={
+                <>
+                  <StatsBar incidents={incidents} />
+                  <FilterBar
+                    searchTerm={searchTerm}
+                    onSearchChange={setSearchTerm}
+                    severityFilter={severityFilter}
+                    onSeverityChange={setSeverityFilter}
+                    statusFilter={statusFilter}
+                    onStatusChange={setStatusFilter}
+                  />
 
-                <main className="mx-auto max-w-7xl px-4 pb-8 sm:px-6">
-                  <IncidentTable
-                    incidents={filteredIncidents}
+                  <main className="mx-auto max-w-7xl px-4 pb-8 sm:px-6">
+                    <IncidentTable
+                      incidents={filteredIncidents}
+                      selectedId={selectedId}
+                      onSelect={setSelectedId}
+                    />
+                  </main>
+
+                  <TriagePanel
+                    incident={selectedIncident}
+                    onAssign={handleAssign}
+                    onStatusChange={handleStatusChange}
+                    onSeverityChange={handleSeverityChange}
+                    onClose={() => setSelectedId(null)}
+                  />
+                </>
+              }
+            />
+            {/* Rota para o Login */}
+            <Route path="/login" element={<Login />} />
+
+            {/* Rota para o Register */}
+            <Route path="/register" element={<Register />} />
+
+            {/* Rota para o formulário de novo chamado */}
+            <Route
+              path="/novo-chamado"
+              element={<NovoChamado onAddIncident={handleAddIncident} />}
+            />
+
+            {/* Rota para a área de Chamados Encerrados */}
+            <Route
+              path="/encerrados"
+              element={
+                <>
+                  <StatsBar incidents={incidents} />
+                  <ChamadosEncerrados
+                    incidents={incidents}
                     selectedId={selectedId}
                     onSelect={setSelectedId}
                   />
-                </main>
 
-                <TriagePanel
-                  incident={selectedIncident}
-                  onAssign={handleAssign}
-                  onStatusChange={handleStatusChange}
-                  onSeverityChange={handleSeverityChange}
-                  onClose={() => setSelectedId(null)}
-                />
-              </>
-            }
-          />
-
-          {/* Rota para o formulário de novo chamado */}
-          <Route
-            path="/novo-chamado"
-            element={<NovoChamado onAddIncident={handleAddIncident} />}
-          />
-
-          {/* Rota para a área de Chamados Encerrados */}
-          <Route
-            path="/encerrados"
-            element={
-              <>
-                <StatsBar incidents={incidents} />
-                <ChamadosEncerrados
-                  incidents={incidents}
-                  selectedId={selectedId}
-                  onSelect={setSelectedId}
-                />
-
-                {/* Mantemos o painel de triagem caso queiram ver detalhes do encerrado */}
-                <TriagePanel
-                  incident={selectedIncident}
-                  onAssign={handleAssign}
-                  onStatusChange={handleStatusChange}
-                  onSeverityChange={handleSeverityChange}
-                  onClose={() => setSelectedId(null)}
-                />
-              </>
-            }
-          />
-        </Routes>
+                  {/* Mantemos o painel de triagem caso queiram ver detalhes do encerrado */}
+                  <TriagePanel
+                    incident={selectedIncident}
+                    onAssign={handleAssign}
+                    onStatusChange={handleStatusChange}
+                    onSeverityChange={handleSeverityChange}
+                    onClose={() => setSelectedId(null)}
+                  />
+                </>
+              }
+            />
+          </Routes>
+        </div>
       </div>
     </BrowserRouter>
   );

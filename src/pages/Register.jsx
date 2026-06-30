@@ -1,29 +1,46 @@
-// Futuras instalacoes no projeto !!!
 import React, { useState } from "react";
-import { FaEnvelope, FaLock } from "react-icons/fa";
+import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
 
-export default function Login({ onSwitchPage }) {
+export default function Register({ onSwitchPage }) {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Login enviado:", { email, password });
-    alert("Tentativa de login enviada! Verifique o console do navegador.");
+    if (password !== confirmPassword) {
+      alert("As senhas não coincidem!");
+      return;
+    }
+    console.log("Cadastro enviado:", { name, email, password });
+    alert("Conta criada com sucesso! (Verifique o console)");
   };
 
   return (
     <div style={styles.container}>
       <div style={styles.card}>
-        <h2 style={styles.title}>Bem-vindo de volta</h2>
-        <p style={styles.subtitle}>
-          Insira suas credenciais para acessar sua conta
-        </p>
+        <h2 style={styles.title}>Crie sua conta</h2>
+        <p style={styles.subtitle}>Preencha os dados abaixo para começar</p>
 
-        <form onSubmit={handleSubmit} style={styles.form}>
+        <form onSubmit={handleSubmit}>
+          <div style={styles.inputGroup}>
+            <label style={styles.label}>Nome Completo</label>
+            <div style={styles.inputWrapper}>
+              <FaUser style={styles.icon} />
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Seu nome"
+                required
+                style={styles.input}
+              />
+            </div>
+          </div>
+
           <div style={styles.inputGroup}>
             <label style={styles.label}>E-mail</label>
-            {/* Invólucro para o ícone e o input */}
             <div style={styles.inputWrapper}>
               <FaEnvelope style={styles.icon} />
               <input
@@ -39,14 +56,28 @@ export default function Login({ onSwitchPage }) {
 
           <div style={styles.inputGroup}>
             <label style={styles.label}>Senha</label>
-            {/* Invólucro para o ícone e o input */}
             <div style={styles.inputWrapper}>
               <FaLock style={styles.icon} />
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
+                placeholder="Mínimo 6 caracteres"
+                required
+                style={styles.input}
+              />
+            </div>
+          </div>
+
+          <div style={styles.inputGroup}>
+            <label style={styles.label}>Confirmar Senha</label>
+            <div style={styles.inputWrapper}>
+              <FaLock style={styles.icon} />
+              <input
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                placeholder="Repita a senha"
                 required
                 style={styles.input}
               />
@@ -54,14 +85,14 @@ export default function Login({ onSwitchPage }) {
           </div>
 
           <button type="submit" style={styles.button}>
-            Entrar
+            Criar conta
           </button>
         </form>
 
         <p style={styles.footerText}>
-          Não tem uma conta?{""}
+          Já possui uma conta?{" "}
           <span onClick={onSwitchPage} style={styles.link}>
-            Cadastre-se aqui
+            Faça login
           </span>
         </p>
       </div>
@@ -69,7 +100,7 @@ export default function Login({ onSwitchPage }) {
   );
 }
 
-// Estilos compartilhados e encapsulados no objeto
+// Reutiliza a mesma estrutura de estilo limpa do Login
 const styles = {
   container: {
     display: "flex",
@@ -102,11 +133,6 @@ const styles = {
     fontSize: "0.9rem",
     textAlign: "center",
   },
-  form: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "1.25rem",
-  },
   inputGroup: {
     display: "flex",
     flexDirection: "column",
@@ -118,7 +144,6 @@ const styles = {
     fontWeight: "500",
     color: "#374151",
   },
-  // Novo estilo para o container do input + ícone
   inputWrapper: {
     display: "flex",
     alignItems: "center",
@@ -129,7 +154,6 @@ const styles = {
     backgroundColor: "#ffffff",
   },
   input: {
-    // Estilos de borda e padding foram para o inputWrapper
     width: "100%",
     fontSize: "1rem",
     outline: "none",
@@ -160,7 +184,6 @@ const styles = {
     cursor: "pointer",
     textDecoration: "underline",
   },
-  // Novo estilo para o ícone
   icon: {
     color: "#6b7280",
   },
