@@ -10,7 +10,6 @@ const navItems = [
   // Adicionando um separador visual para as rotas de autenticação
   { isSeparator: true },
   { to: "/login", icon: FaUser, label: "Login" },
-  { to: "/register", icon: FaUserPlus, label: "Registrar" },
 ];
 
 function NavBar() {

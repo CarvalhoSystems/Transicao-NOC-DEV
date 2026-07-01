@@ -77,7 +77,6 @@ const styles = {
     alignItems: "center",
     minHeight: "85vh",
     fontFamily: "system-ui, sans-serif",
-    backgroundColor: "#f3f4f6",
     padding: "1rem",
   },
   card: {
