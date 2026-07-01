@@ -75,9 +75,9 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    minHeight: "85vh",
+    minHeight: "calc(100vh - 64px)", // Ocupa a altura total menos o Header
     fontFamily: "system-ui, sans-serif",
-    padding: "1rem",
+    backgroundColor: "#f3f4f6", // Fundo claro restaurado
   },
   card: {
     backgroundColor: "#ffffff",

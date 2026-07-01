@@ -94,7 +94,7 @@ function App() {
         <NavBar />
 
         {/* 3. Container do conteúdo principal que ocupará o resto da tela */}
-        <div className="flex flex-1 flex-col">
+        <div className="flex-1">
           <Header />
           <Routes>
             {/* Rota principal do Dashboard */}
