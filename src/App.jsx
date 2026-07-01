@@ -11,6 +11,7 @@ import ChamadosEncerrados from "./components/ChamadosEncerrados"; // Importando 
 import NavBar from "./components/NavBar"; // 1. Importando a nova NavBar
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import { useMediaQuery } from "./hooks/useMediaQuery";
 
 // forçando redeploy
 
@@ -25,6 +26,9 @@ function App() {
 
   // ID do incidente selecionado para triagem (null = nenhum)
   const [selectedId, setSelectedId] = useState(null);
+
+  // Hook para verificar se a tela é maior que 'lg' (1024px)
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
 
   /**
    * useMemo evita recalcular o filtro a cada render se os inputs não mudaram.
@@ -91,10 +95,17 @@ function App() {
     <BrowserRouter>
       {/* 2. Layout principal com Flexbox */}
       <div className="flex min-h-screen bg-slate-950 text-slate-200">
-        <NavBar />
+        {/*
+          - hidden: Oculto em telas pequenas (mobile-first)
+          - md:flex: Visível em telas médias (tablet), colapsado por padrão
+          - lg:*: Em telas grandes (desktop), o container se expande e passamos `isExpanded`
+        */}
+        <div className="hidden md:flex">
+          <NavBar isExpanded={isDesktop} />
+        </div>
 
         {/* 3. Container do conteúdo principal que ocupará o resto da tela */}
-        <div className="flex-1">
+        <div className="flex-1 overflow-x-auto">
           <Header />
           <Routes>
             {/* Rota principal do Dashboard */}

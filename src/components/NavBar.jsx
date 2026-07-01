@@ -12,11 +12,17 @@ const navItems = [
   { to: "/login", icon: FaUser, label: "Login" },
 ];
 
-function NavBar() {
+function NavBar({ isExpanded }) {
   return (
-    <aside className="flex flex-col items-center gap-y-6 border-r border-slate-800 bg-slate-900 p-3">
+    <aside
+      className={`flex flex-col gap-y-6 border-r border-slate-800 bg-slate-900 p-3 transition-all duration-300 ${
+        isExpanded ? "items-start" : "items-center"
+      }`}
+    >
       {/* Logo Placeholder */}
-      <div className="rounded-lg bg-cyan-500/80 p-2 text-white">
+      <div
+        className={`rounded-lg bg-cyan-500/80 p-2 text-white ${isExpanded ? "self-center" : ""}`}
+      >
         <Home size={28} />
       </div>
 
@@ -29,18 +35,21 @@ function NavBar() {
             <NavLink
               key={item.to}
               to={item.to}
-              // Estiliza o link se ele estiver ativo (correspondente à rota atual)
               className={({ isActive }) =>
-                `rounded-lg p-3 transition-colors ${
+                `flex items-center gap-x-3 rounded-lg p-3 transition-colors ${
                   isActive
                     ? "bg-cyan-500/20 text-cyan-400"
                     : "text-slate-500 hover:bg-slate-800 hover:text-slate-300"
                 }`
               }
-              title={item.label} // Tooltip com o nome da página
+              title={isExpanded ? "" : item.label} // Mostra tooltip apenas quando colapsado
             >
-              {/* O componente do ícone já é renderizável */}
               <item.icon size={22} />
+              {isExpanded && (
+                <span className="whitespace-nowrap text-sm font-medium">
+                  {item.label}
+                </span>
+              )}
             </NavLink>
           ),
         )}
