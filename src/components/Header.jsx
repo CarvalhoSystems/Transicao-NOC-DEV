@@ -40,7 +40,7 @@ function Header() {
 
       {/* Menu Overlay para Mobile */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-50 flex flex-col bg-slate-950 md:hidden">
+        <div className="fixed inset-0 z-50 flex flex-col w-full h-screen bg-slate-950 bg-opacity-100 md:hidden">
           {/* Cabeçalho do Menu Mobile */}
           <div className="flex items-center justify-between border-b border-slate-800 p-4">
             <h2 className="text-lg font-semibold text-white">Menu</h2>
@@ -58,9 +58,9 @@ function Header() {
               <NavLink
                 key={item.to}
                 to={item.to}
-                onClick={() => setIsMenuOpen(false)} // Fecha o menu ao clicar
+                onClick={() => setIsMenuOpen(false)}
                 className={({ isActive }) =>
-                  `flex items-center gap-x-3 rounded-lg p-3 text-base font-medium transition-colors ${
+                  `flex items-center gap-x-4 rounded-lg p-3 text-base font-medium transition-colors ${
                     isActive
                       ? "bg-cyan-500/10 text-cyan-400"
                       : "text-slate-400 hover:bg-slate-800"
