@@ -12,6 +12,8 @@ import NavBar from "./components/NavBar"; // 1. Importando a nova NavBar
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 
+// forçando redeploy
+
 function App() {
   // Estado principal: lista de incidentes (equivalente ao array que manipulavas no Vanilla JS)
   const [incidents, setIncidents] = useState(initialIncidents);
