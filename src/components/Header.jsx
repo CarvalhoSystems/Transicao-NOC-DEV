@@ -1,30 +1,79 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Search, Bell, Menu, X, Home, PlusCircle, Archive } from "lucide-react";
+import { NavLink } from "react-router-dom";
+
+// Reutilizando os mesmos itens da NavBar para consistência
+const navItems = [
+  { to: "/", icon: Home, label: "Dashboard" },
+  { to: "/novo-chamado", icon: PlusCircle, label: "Novo Chamado" },
+  { to: "/encerrados", icon: Archive, label: "Encerrados" },
+];
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="relative z-50 border-b border-slate-700/60 bg-slate-900/80 px-6 py-4 backdrop-blur-sm">
-      <div className="mx-auto flex max-w-7xl items-center justify-between">
-        <div>
-          <p className="text-xs font-medium uppercase tracking-widest text-cyan-500">
-            NOC Operations
-          </p>
-          <h1 className="text-xl font-semibold text-white">
-            Painel de Triagem de Incidentes
-          </h1>
-        </div>
+    <header className="flex items-center justify-between border-b border-slate-800 bg-slate-900/80 px-4 py-3 backdrop-blur-sm sm:px-6">
+      {/* Botão do Menu Hambúrguer - Visível apenas em telas pequenas */}
+      <button
+        className="text-slate-400 hover:text-white md:hidden"
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+      >
+        <Menu size={24} />
+      </button>
 
-        <div className="flex items-center gap-4">
-          <div className="hidden md:flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1">
-            <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
-            <span className="text-sm text-emerald-400">
-              Monitorização ativa
-            </span>
-          </div>
+      {/* Barra de Pesquisa - Escondida em telas pequenas */}
+      <div className="hidden flex-1 items-center gap-2 sm:flex">
+        <Search className="ml-2 h-5 w-5 text-slate-500" />
+        <span className="text-sm text-slate-500">Pesquisar...</span>
+      </div>
+
+      {/* Ícones da Direita: Notificações e Perfil */}
+      <div className="flex items-center gap-3">
+        <button className="rounded-full p-2 text-slate-400 transition-colors hover:bg-slate-700/50 hover:text-white">
+          <Bell size={20} />
+        </button>
+        <div className="h-8 w-8 rounded-full bg-slate-700">
+          {/* Placeholder para a imagem do perfil */}
         </div>
       </div>
+
+      {/* Menu Overlay para Mobile */}
+      {isMenuOpen && (
+        <div className="fixed inset-0 z-50 flex flex-col bg-slate-950 md:hidden">
+          {/* Cabeçalho do Menu Mobile */}
+          <div className="flex items-center justify-between border-b border-slate-800 p-4">
+            <h2 className="text-lg font-semibold text-white">Menu</h2>
+            <button
+              className="text-slate-400 hover:text-white"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <X size={24} />
+            </button>
+          </div>
+
+          {/* Links de Navegação Mobile */}
+          <nav className="flex flex-col gap-y-2 p-4">
+            {navItems.map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                onClick={() => setIsMenuOpen(false)} // Fecha o menu ao clicar
+                className={({ isActive }) =>
+                  `flex items-center gap-x-3 rounded-lg p-3 text-base font-medium transition-colors ${
+                    isActive
+                      ? "bg-cyan-500/10 text-cyan-400"
+                      : "text-slate-400 hover:bg-slate-800"
+                  }`
+                }
+              >
+                <item.icon size={22} />
+                <span>{item.label}</span>
+              </NavLink>
+            ))}
+          </nav>
+        </div>
+      )}
     </header>
   );
 }

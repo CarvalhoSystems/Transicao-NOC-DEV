@@ -5,6 +5,7 @@ import { FaUser, FaUserPlus } from "react-icons/fa";
 // Itens da navegação com seus ícones e rotas correspondentes
 const navItems = [
   { to: "/", icon: Home, label: "Dashboard" },
+  { isSeparator: true },
   { to: "/novo-chamado", icon: PlusCircle, label: "Novo Chamado" },
   { to: "/encerrados", icon: Archive, label: "Encerrados" },
   // Adicionando um separador visual para as rotas de autenticação
