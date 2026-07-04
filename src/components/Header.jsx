@@ -22,11 +22,8 @@ function Header() {
         <Menu size={24} />
       </button>
 
-      {/* Barra de Pesquisa - Escondida em telas pequenas */}
-      <div className="hidden flex-1 items-center gap-2 sm:flex">
-        <Search className="ml-2 h-5 w-5 text-slate-500" />
-        <span className="text-sm text-slate-500">Pesquisar...</span>
-      </div>
+      {/* Barra cinza na parte de cima */}
+      <div className="hidden flex-1 items-center gap-2 sm:flex"></div>
 
       {/* Ícones da Direita: Notificações e Perfil */}
       <div className="flex items-center gap-3">
@@ -35,6 +32,11 @@ function Header() {
         </button>
         <div className="h-8 w-8 rounded-full bg-slate-700">
           {/* Placeholder para a imagem do perfil */}
+          <img
+            src="/image-para-trabalho.png"
+            alt="image_placeholder"
+            className="h-full w-full object-cover rounded-full"
+          />
         </div>
       </div>
 

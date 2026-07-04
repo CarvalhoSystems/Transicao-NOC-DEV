@@ -1,6 +1,7 @@
 // Futuras instalacoes no projeto !!!
 import React, { useState } from "react";
 import { FaEnvelope, FaLock } from "react-icons/fa";
+import { ImTextColor } from "react-icons/im";
 
 export default function Login({ onSwitchPage }) {
   const [email, setEmail] = useState("");
@@ -60,7 +61,7 @@ export default function Login({ onSwitchPage }) {
 
         <p style={styles.footerText}>
           Não tem uma conta?{""}
-          <span onClick={onSwitchPage} style={styles.link}>
+          <span onClick={<Register />} style={styles.link}>
             Cadastre-se aqui
           </span>
         </p>
@@ -77,7 +78,7 @@ const styles = {
     alignItems: "center",
     minHeight: "calc(100vh - 64px)", // Ocupa a altura total menos o Header
     fontFamily: "system-ui, sans-serif",
-    backgroundColor: "#f3f4f6", // Fundo claro restaurado
+    backgroundColor: "var(--bg-color)", // Fundo do padrao 
   },
   card: {
     backgroundColor: "#ffffff",
@@ -115,7 +116,7 @@ const styles = {
   label: {
     fontSize: "0.875rem",
     fontWeight: "500",
-    color: "#374151",
+    color: "#000000",
   },
   // Novo estilo para o container do input + ícone
   inputWrapper: {
@@ -134,6 +135,7 @@ const styles = {
     outline: "none",
     border: "none",
     backgroundColor: "transparent",
+    color: "#000000",
   },
   button: {
     width: "100%",

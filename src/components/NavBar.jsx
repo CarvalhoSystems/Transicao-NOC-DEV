@@ -1,16 +1,24 @@
-import { Home, PlusCircle, Archive } from "lucide-react";
 import { NavLink } from "react-router-dom";
-import { FaUser, FaUserPlus } from "react-icons/fa";
+import { Home } from "lucide-react";
+import {
+  TbLayoutDashboard,
+  TbCirclePlus, // <-- Mudou aqui!
+  TbArchive,
+  TbMail,
+  TbLogin2,
+  TbUserPlus,
+} from "react-icons/tb";
 
-// Itens da navegação com seus ícones e rotas correspondentes
 const navItems = [
-  { to: "/", icon: Home, label: "Dashboard" },
+  { to: "/", icon: TbLayoutDashboard, label: "Dashboard" },
   { isSeparator: true },
-  { to: "/novo-chamado", icon: PlusCircle, label: "Novo Chamado" },
-  { to: "/encerrados", icon: Archive, label: "Encerrados" },
-  // Adicionando um separador visual para as rotas de autenticação
+  { to: "/novo-chamado", icon: TbCirclePlus, label: "Novo Chamado" }, // <-- E aqui!
+  { to: "/encerrados", icon: TbArchive, label: "Encerrados" },
   { isSeparator: true },
-  { to: "/login", icon: FaUser, label: "Login" },
+  { to: "/email", icon: TbMail, label: "Email" },
+  { isSeparator: true },
+  { to: "/login", icon: TbLogin2, label: "Login" },
+  { to: "/register", icon: TbUserPlus, label: "Register" },
 ];
 
 function NavBar({ isExpanded }) {
@@ -31,7 +39,7 @@ function NavBar({ isExpanded }) {
       <nav className="flex flex-col gap-y-3">
         {navItems.map((item, index) =>
           item.isSeparator ? (
-            <hr key={index} className="border-slate-700/50" />
+            <hr key={`sep-${index}`} className="border-slate-700/50" />
           ) : (
             <NavLink
               key={item.to}
@@ -43,7 +51,7 @@ function NavBar({ isExpanded }) {
                     : "text-slate-500 hover:bg-slate-800 hover:text-slate-300"
                 }`
               }
-              title={isExpanded ? "" : item.label} // Mostra tooltip apenas quando colapsado
+              title={isExpanded ? "" : item.label}
             >
               <item.icon size={22} />
               {isExpanded && (

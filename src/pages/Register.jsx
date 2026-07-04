@@ -108,7 +108,7 @@ const styles = {
     alignItems: "center",
     minHeight: "calc(100vh - 64px)", // Ocupa a altura total menos o Header
     fontFamily: "system-ui, sans-serif",
-    backgroundColor: "#f3f4f6",
+    backgroundColor: "var(--bg-color)", // Fundo do padrao
   },
   card: {
     backgroundColor: "#ffffff",
@@ -158,6 +158,7 @@ const styles = {
     outline: "none",
     border: "none",
     backgroundColor: "transparent",
+    color: "#000000",
   },
   button: {
     width: "100%",
