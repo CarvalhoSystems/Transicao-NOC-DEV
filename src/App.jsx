@@ -9,7 +9,7 @@ import { BrowserRouter, Routes, Route, Router } from "react-router-dom"; //Bibli
 import NovoChamado from "./components/NovoChamado"; //Novo Formulario que vai mudar de pagina
 import ChamadosEncerrados from "./components/ChamadosEncerrados"; // Importando como Componente
 import NavBar from "./components/NavBar"; // 1. Importando a nova NavBar
-import Login from "./pages/Login";
+import Login from "./pages/Login_temp";
 import Register from "./pages/Register";
 import Email from "./pages/Email";
 import { useMediaQuery } from "./hooks/useMediaQuery";
