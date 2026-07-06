@@ -1,18 +1,33 @@
 // Futuras instalacoes no projeto !!!
 import React, { useState } from "react";
 import { FaEnvelope, FaLock } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Login enviado:", { email, password });
-    alert("Tentativa de login enviada! Verifique o console do navegador.");
+    if (!email || !password) {
+      alert("Por favor, preencha todos os campos!");
+      return;
+    }
+    authUser(email, password);
   };
 
+  const authUser = (email, password) => {
+    if (email === "admin@admin.com" && password === "admin") {
+      navigate("/novo-chamado");
+      return;
+    }
+
+    console.log("Login enviado:", { email, password });
+    alert("Usuário ou senha incorretos.");
+  };
+
+  // O bloco de retorno PRECISA ficar aqui dentro da função Login
   return (
     <div style={styles.container}>
       <div style={styles.card}>
@@ -24,7 +39,6 @@ export default function Login() {
         <form onSubmit={handleSubmit} style={styles.form}>
           <div style={styles.inputGroup}>
             <label style={styles.label}>E-mail</label>
-            {/* Invólucro para o ícone e o input */}
             <div style={styles.inputWrapper}>
               <FaEnvelope style={styles.icon} />
               <input
@@ -40,7 +54,6 @@ export default function Login() {
 
           <div style={styles.inputGroup}>
             <label style={styles.label}>Senha</label>
-            {/* Invólucro para o ícone e o input */}
             <div style={styles.inputWrapper}>
               <FaLock style={styles.icon} />
               <input
@@ -58,7 +71,7 @@ export default function Login() {
             Entrar
           </button>
         </form>
-        
+
         <p style={styles.footerText}>
           Não tem uma conta?{" "}
           <Link to="/register" style={styles.link}>
@@ -68,7 +81,7 @@ export default function Login() {
       </div>
     </div>
   );
-}
+} // <--- ESSA CHAVE FOI MOVIDA PARA CÁ (Fechando o export default function Login)
 
 // Estilos compartilhados e encapsulados no objeto
 const styles = {
@@ -76,9 +89,9 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    minHeight: "calc(100vh - 64px)", // Ocupa a altura total menos o Header
+    minHeight: "calc(100vh - 64px)",
     fontFamily: "system-ui, sans-serif",
-    backgroundColor: "var(--bg-color)", // Fundo do padrao 
+    backgroundColor: "var(--bg-color)",
   },
   card: {
     backgroundColor: "#ffffff",
@@ -118,7 +131,6 @@ const styles = {
     fontWeight: "500",
     color: "#000000",
   },
-  // Novo estilo para o container do input + ícone
   inputWrapper: {
     display: "flex",
     alignItems: "center",
@@ -129,7 +141,6 @@ const styles = {
     backgroundColor: "#ffffff",
   },
   input: {
-    // Estilos de borda e padding foram para o inputWrapper
     width: "100%",
     fontSize: "1rem",
     outline: "none",
@@ -161,7 +172,6 @@ const styles = {
     cursor: "pointer",
     textDecoration: "underline",
   },
-  // Novo estilo para o ícone
   icon: {
     color: "#6b7280",
   },

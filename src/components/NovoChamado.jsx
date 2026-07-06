@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useNotifications } from "../Context/NotificationContext"; // 1. IMPORTADO O HOOK (Ajuste o caminho da pasta se necessário)
 
 function NovoChamado({ onAddIncident }) {
   const navigate = useNavigate();
+  const { triggerNotification } = useNotifications(); // 2. INSTANCIADO O HOOK DE NOTIFICAÇÕES
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [formData, setFormData] = useState({
     company: "",
@@ -57,7 +59,7 @@ function NovoChamado({ onAddIncident }) {
       text.includes("api") ||
       text.includes("sistema") ||
       text.includes("erro de código") ||
-      text.includes("crash") || // Adicionado para cobrir erros de dev comuns
+      text.includes("crash") ||
       text.includes("stack")
     ) {
       service = "Desenvolvimento";
@@ -72,8 +74,8 @@ function NovoChamado({ onAddIncident }) {
       text.includes("telefone") ||
       text.includes("ramal") ||
       text.includes("voip") ||
-      text.includes("cloudsy") || // Adicionado para o seu exemplo real!
-      text.includes("avaya") // Adicionado para o seu exemplo real!
+      text.includes("cloudsy") ||
+      text.includes("avaya")
     ) {
       service = "Telefonia";
     }
@@ -109,10 +111,15 @@ function NovoChamado({ onAddIncident }) {
       };
 
       onAddIncident(newIncident);
+
+      // 3. ADICIONADO AQUI: Dispara a bolinha vermelha no sininho do Header
+      triggerNotification();
+
       setIsAnalyzing(false);
       navigate("/"); // Volta para o dashboard
     }, 1500);
   }
+
 
   return (
     <div className="flex min-h-[calc(100vh-64px)] items-center justify-center p-6 bg-slate-950">
@@ -210,5 +217,6 @@ function NovoChamado({ onAddIncident }) {
       </div>
     </div>
   );
-}
+};
+
 export default NovoChamado;
