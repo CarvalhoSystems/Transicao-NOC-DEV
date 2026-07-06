@@ -5,12 +5,13 @@ import FilterBar from "./components/FilterBar";
 import IncidentTable from "./components/IncidentTable";
 import TriagePanel from "./components/TriagePanel";
 import { initialIncidents } from "./data/incidents";
-import { BrowserRouter, Routes, Route } from "react-router-dom"; //Biblioteca de rotas de paginas
+import { BrowserRouter, Routes, Route, Router } from "react-router-dom"; //Biblioteca de rotas de paginas
 import NovoChamado from "./components/NovoChamado"; //Novo Formulario que vai mudar de pagina
 import ChamadosEncerrados from "./components/ChamadosEncerrados"; // Importando como Componente
 import NavBar from "./components/NavBar"; // 1. Importando a nova NavBar
 import Login from "./pages/login";
 import Register from "./pages/Register";
+import Email from "./pages/Email";
 import { useMediaQuery } from "./hooks/useMediaQuery";
 
 // forçando redeploy
@@ -146,6 +147,9 @@ function App() {
 
             {/* Rota para o Register */}
             <Route path="/register" element={<Register />} />
+
+            {/* Rota para o Email */}
+            <Route path="/email" element={<Email />} />
 
             {/* Rota para o formulário de novo chamado */}
             <Route

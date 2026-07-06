@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Register({ onSwitchPage }) {
   const [name, setName] = useState("");
@@ -91,9 +92,10 @@ export default function Register({ onSwitchPage }) {
 
         <p style={styles.footerText}>
           Já possui uma conta?{" "}
-          <span onClick={onSwitchPage} style={styles.link}>
+          {/* Mudamos de span para Link e usamos "to" apontando para a URL /login */}
+          <Link to="/login" style={styles.link}>
             Faça login
-          </span>
+          </Link>
         </p>
       </div>
     </div>

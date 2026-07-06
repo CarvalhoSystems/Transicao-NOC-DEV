@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { Home } from "lucide-react";
+import { Home, Zap } from "lucide-react";
 import {
   TbLayoutDashboard,
   TbCirclePlus, // <-- Mudou aqui!
@@ -18,7 +18,6 @@ const navItems = [
   { to: "/email", icon: TbMail, label: "Email" },
   { isSeparator: true },
   { to: "/login", icon: TbLogin2, label: "Login" },
-  { to: "/register", icon: TbUserPlus, label: "Register" },
 ];
 
 function NavBar({ isExpanded }) {
@@ -32,7 +31,7 @@ function NavBar({ isExpanded }) {
       <div
         className={`rounded-lg bg-cyan-500/80 p-2 text-white ${isExpanded ? "self-center" : ""}`}
       >
-        <Home size={28} />
+        <Zap size={28} />
       </div>
 
       {/* Navegação Principal */}

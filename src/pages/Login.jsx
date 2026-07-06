@@ -1,9 +1,9 @@
 // Futuras instalacoes no projeto !!!
 import React, { useState } from "react";
 import { FaEnvelope, FaLock } from "react-icons/fa";
-import { ImTextColor } from "react-icons/im";
+import { Link } from "react-router-dom";
 
-export default function Login({ onSwitchPage }) {
+export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -58,12 +58,12 @@ export default function Login({ onSwitchPage }) {
             Entrar
           </button>
         </form>
-
+        
         <p style={styles.footerText}>
-          Não tem uma conta?{""}
-          <span onClick={<Register />} style={styles.link}>
+          Não tem uma conta?{" "}
+          <Link to="/register" style={styles.link}>
             Cadastre-se aqui
-          </span>
+          </Link>
         </p>
       </div>
     </div>
