@@ -29,3 +29,6 @@ export function NotificationProvider({ children }) {
 export function useNotifications() {
   return useContext(NotificationContext);
 }
+
+// Compatibilidade: algumas versões antigas do código podem importar userNotifications
+export { useNotifications as userNotifications };

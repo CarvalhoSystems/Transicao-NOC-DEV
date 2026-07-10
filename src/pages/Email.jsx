@@ -7,7 +7,7 @@ export default function Email() {
   const [recipient, setRecipient] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
-  const { triggerNotification } = useNotifications("");
+  const { triggerNotification } = useNotifications();
 
   const handleSubmit = (e) => {
     e.preventDefault();
