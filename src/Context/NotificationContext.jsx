@@ -21,6 +21,7 @@ export function NotificationProvider({ children }) {
     >
       {children}
     </NotificationContext.Provider>
+
   );
 }
 
