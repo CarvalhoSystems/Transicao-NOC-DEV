@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { FaEnvelope, FaPaperPlane } from "react-icons/fa";
 import { FiType, FiMessageSquare } from "react-icons/fi";
-import { userNotifications } from "../Context/NotificationContext";
+import { useNotifications } from "../Context/NotificationContext";
 
 export default function Email() {
   const [recipient, setRecipient] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
-  const { triggerNotification } = userNotifications();
+  const { triggerNotification } = useNotifications("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
